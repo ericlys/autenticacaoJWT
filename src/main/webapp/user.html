@@ -1,0 +1,35 @@
+<div ng-controller="UserController">
+    <h1>User Registration</h1>
+    <form name="userForm" ng-submit="save()">
+        <div class="form-group">
+            <label for="username">Username*</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username"
+                   maxlength="20" required ng-model="user.username">
+        </div>
+        <div class="form-group has-feedback {{statusPassword.cssClass}}">
+            <label for="senha">Password*</label>
+            <input type="password" class="form-control" id="senha" placeholder="Enter password"
+                   maxlength="10" required ng-model="user.password" ng-change="passwordValidate()">
+            <span class="glyphicon form-control-feedback {{statusPassword.icon}}"
+                  aria-hidden="true"></span>
+            <p class="help-block">{{statusPassword.msg}}</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <hr>
+    <h1>User List</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
